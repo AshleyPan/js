@@ -6,11 +6,11 @@
 
 ### 目录 ###
 
-1. js发展历程
+1. [js发展历程](./chapter1/overview.md)
 
- - 1-1 起源
- - 1-2 现在
- - 1-3 未来
+ - 1-1 [起源](./chapter1/begin.md)
+ - 1-2 [现在](./chapter1/es6.md)
+ - 1-3 [未来](./chapter1/future.md)
 
 2. js数据类型
 
