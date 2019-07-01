@@ -14,6 +14,9 @@
 - [concat](#concat)
 - [endsWith](#endsWith)
 - [includes](#includes)
+- [indexOf](#indexOf)
+- [lastIndexOf](#lastIndexOf)
+- [localeCompare](#localeCompare)
 - [面试题](#questions)
 
 <span id="initial"></span>
@@ -201,6 +204,76 @@ raw方法用来构造新的字符串，raw方法有两个: template和substituti
 	let a = "hello";
     console.log(a.includes('ll'));  // true
 	console.log(a.includes('e', 2));  // false
+###
+
+<span id="indexOf"></span>
+### indexOf ###
+
+实例方法, 用于返回目标字符串在源字符串的起始位置
+
+### 
+	/*
+	 * @desc 返回目标字符串在源字符串的起始位置，未找到返回-1
+	 * @param string 目标字符串
+	 * @param number 查找起点, 默认是0
+	 * @return number 目标字符串在源字符串的起点
+	 */
+	let a = "hello";
+	let pos = a.indexOf('ll');
+	let posErr = a.indexOf('lr');
+
+	console.log(pos);    // 2
+    console.log(posErr);   // -1, 未查找到则返回-1
+###
+
+<span id="lastIndexOf"></span>
+### lastIndexOf ###
+
+实例方法, 用于返回目标字符串在源字符串的终点位置
+
+### 
+	/*
+	 * @desc 返回目标字符串在源字符串的终点位置，未找到返回-1
+	 *       lastIndexOf与indexOf的区别是，前者返回的是终点位置
+	 * @param string 目标字符串
+	 * @param number 查找起点，默认是源字符串的长度
+	 * @return number 目标字符串在源字符串的终点位置
+	 */
+
+	let a = "hello";
+	let pos = a.indexOf("ll")
+	let posOfLast = a.lastIndexOf("ll");
+	let posErr = a.lastInfdexOf("ly");
+
+	console.log(pos);              // 2
+	console.log(posOfLast);        // 3
+	console.log(posErr);           // -1
+###
+
+<span id="localeCompare"></span>
+### localeCompare ###
+
+实例方法，用于对字符串进行排序
+
+###
+	/*
+	 * @desc 用于对指定字符串与源字符串依据unicode格式进行排序
+	 * @param string 目标字符串
+	 * @param ?string|?array locales，指定语言类型
+	 * @param ?object 其他辅助配置
+	 * @return number 相等返回0，目标字符串首字母unicode值小于源字符串返回负数，否则返回正数
+	 */
+
+	let a = "hello";
+	let equal = a.localeCompare("hello");
+    let equalLocales = a.localeCompare("HELLO", "co", {sensitivity: "base"}); // "co" 不可缺省
+	let bigger = a.localeCompare("HELLO");
+	let smaller = a.localeCompare("ello");
+
+	console.log(equal);            // 0
+	console.log(equalLocales);     // 0
+	console.log(bigger);           // 1 ecma-262只规定了相等返回0，大于返回负数，小于返回正数
+	console.log(smaller);          // -1 ecma-262只规定了相等返回0，大于返回负数，小于返回正数
 ###
 
 <span id="questions"></span>
