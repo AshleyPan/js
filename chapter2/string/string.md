@@ -17,6 +17,11 @@
 - [indexOf](#indexOf)
 - [lastIndexOf](#lastIndexOf)
 - [localeCompare](#localeCompare)
+- [match](#match)
+- [normalize](#normalize)
+- [padEnd](#padEnd)
+- [padStart](#padStart)
+- [repeat](#repeat)
 - [面试题](#questions)
 
 <span id="initial"></span>
@@ -274,6 +279,102 @@ raw方法用来构造新的字符串，raw方法有两个: template和substituti
 	console.log(equalLocales);     // 0
 	console.log(bigger);           // 1 ecma-262只规定了相等返回0，大于返回负数，小于返回正数
 	console.log(smaller);          // -1 ecma-262只规定了相等返回0，大于返回负数，小于返回正数
+###
+
+<span id="match"></span>
+### match ###
+
+实例方法，判断源字符串是否符合自定义格式
+
+### 
+	/*
+	 * @desc 根据正则表达式检索源字符串是否匹配
+	 * @param regexp 正则表达式
+	 * @return array|null 返回所有匹配项
+	 */
+	let reg = /\S+/ig;
+	let str1 = "hello";
+	let str2 = " ";
+
+	console.log(str1.match(reg), str2.match(reg));      // ['hello'] null
+###
+
+<span id="normalize"></span>
+### normalize ###
+
+实例方法,以某个标准(NFC/NFD/NFKC/NFKD)格式化unicode
+
+### 
+	/*
+	 * @desc 按标准返回unicode，标准只能是下述4种之一，否则会报错
+	 * @param string  NFC/NFD/NFKC/NFKD
+	 * @return string
+	 */
+	let formStr = "\u1E9B\u0323";
+	
+	console.log(formStr.normalize("NFC"));       // ẛ̣
+	console.log(formStr.normalize("NFD"));       // ẛ̣
+	console.log(formStr.normalize("NFKC"));      // ṩ
+	console.log(formStr.normalize("NFKD"));      // ṩ
+###
+
+<span id="padEnd"></span>
+### padEnd ###
+
+实例方法,用于向源字符串拼接目标字符串,目标字符串会重复拼接直到总字符长度达到指定上限
+
+### 
+	/*
+	 * @desc 重复拼接字符串,直到总长度达到指定上限
+	 * @param number 总字符串长度上限
+	 * @param string 拼接字符串(filler)
+	 * @return string 拼接后的字符串(src+filler)
+	 */
+	let a = "hello";
+	let end = a.padEnd(10, "world");
+	let b = a.padEnd(8, "!");
+	let c = a.padEnd(7);
+	
+	console.log(end);     // "helloworld"
+	console.log(b);     // "hello!!!"
+	console.log(c);     // "hello  " filler为undefined时用" "补充
+###
+
+<span id="padStart"></span>
+### padStart ###
+
+实例方法, 用于向源字符串拼接目标字符串,目标字符串会重复拼接直到总字符串达到指定上限
+
+### 
+	/*
+	 * @desc 重复拼接字符串,直到总长度达到指定上限，与padEnd区别是后者从源字符串尾部拼接
+	 * @param number 总字符串长度上限
+	 * @param string 拼接字符串
+	 * @return string 拼接后字符串(filler+src)
+	 */
+	let src = "world";
+	let end = src.padStart(10, "hello");
+	
+	console.log(end);                      // "helloworld"
+	console.log(src.padStart(6));          // " world"    filler为undefined是用" "补充
+	console.log(src.padStart(8, "hello"))  // "helworld"
+###
+
+<span id="repeat"></span>
+### repeat ###
+
+实例方法, 用于复制源字符串
+
+### 
+	/*
+	 * @desc 复制字符串并拼接到源字符串后返回
+	 * @param number 复制次数n
+	 * @return string 返回复制后的字符串
+	 */
+	let src = "hello";
+	
+	console.log(src.repeat(2));      // "hellohello"
+	console.log(src.repeat(0));      // ""
 ###
 
 <span id="questions"></span>
