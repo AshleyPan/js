@@ -22,6 +22,9 @@
 - [padEnd](#padEnd)
 - [padStart](#padStart)
 - [repeat](#repeat)
+- [replace](#replace)
+- [search](#search)
+- [slice](#slice)
 - [面试题](#questions)
 
 <span id="initial"></span>
@@ -375,6 +378,57 @@ raw方法用来构造新的字符串，raw方法有两个: template和substituti
 	
 	console.log(src.repeat(2));      // "hellohello"
 	console.log(src.repeat(0));      // ""
+###
+
+<span id="replace"></span>
+### replace ###
+
+实例方法, 用于替换源字符串中指定内容
+
+### 
+	/*
+	 * @desc 替换源字符串中的指定内容,返回新的字符串
+	 * @param regexp 需要替换的字符串
+	 * @param string 将替换的内容
+	 * @return string 返回一个新的字符串
+	 */
+	let str = "hello";
+	let replacer1 = str.replace(/ll/ig, "ee");
+	let replacer2 = str.replace("ll", "ee");
+
+	console.log(str, replacer1, replacer2);    // "hello" "heeeo" "heeeo"
+###
+
+<span id="search"></span>
+### search ###
+
+### 
+	/*
+	 * @desc 实例方法, 判断源字符串中是否有预期模型
+	 * @param regexp 预期模型
+	 * @return number 未匹配返回-1否则返回初次匹配的位置
+	 */
+	let str = "hello world";
+
+	console.log(str.search(/l/ig));        // 2
+	console.log(str.search("ll"));         // 2
+###
+
+<span id="slice"></span>
+### slice ###
+
+### 
+	/*
+	 * @desc 实例方法,用于截取源字符串，并将截取的字符串生成快照返回，
+	 * @param number 截取起点， 负数时会被转化为 string.length + start
+	 * @param end 截取终点，负数时会被转化为 string.length + end
+	 * @return string
+	 */
+	let str = "hello world";
+
+	console.log(str.slice(-1))  // "d"
+	console.log(str.slice(-2, -3)) // ""  start <　end 返回""
+	console.log(str.slice(1))  // "hello world"
 ###
 
 <span id="questions"></span>
